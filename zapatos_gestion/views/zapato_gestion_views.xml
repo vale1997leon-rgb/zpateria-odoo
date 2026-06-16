@@ -1,0 +1,66 @@
+<odoo>
+    <record id="view_zapato_form_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.form.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapato_form"/> <field name="arch" type="xml">
+
+            <xpath expr="//group" position="inside">
+                <field name="codigo"/>
+                <field name="marca"/>
+                <field name="color"/>
+                <field name="material"/>
+                <field name="genero"/>
+                <field name="tipo_cierre"/>
+                <field name="temporada"/>
+                <field name="stock_minimo"/>
+                <field name="valor_inventario" readonly="1"/>
+                <field name="necesita_reposicion" readonly="1"/>
+                <field name="descripcion"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_zapato_list_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.list.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapato_list"/> <field name="arch" type="xml">
+
+            <xpath expr="//list" position="inside">
+                <field name="codigo"/>
+                <field name="marca"/>
+                <field name="color"/>
+                <field name="genero"/>
+                <field name="temporada"/>
+                <field name="valor_inventario"/>
+                <field name="necesita_reposicion" widget="boolean_toggle" readonly="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_zapato_search_gestion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.search.gestion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="arch" type="xml">
+            
+            <search string="Buscar Zapatos">
+                <field name="codigo"/>
+                <field name="marca"/>
+                <field name="color"/>
+                
+                <filter string="Necesita Reposición" name="reposicion" domain="[('necesita_reposicion', '=', True)]"/>
+                <filter string="Calzado de Hombre" name="hombre" domain="[('genero', '=', 'hombre')]"/>
+                <filter string="Calzado de Mujer" name="mujer" domain="[('genero', '=', 'mujer')]"/>
+                
+                <separator/>
+                
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Marca" name="group_by_marca" context="{'group_by': 'marca'}"/>
+                    <filter string="Temporada" name="group_by_temporada" context="{'group_by': 'temporada'}"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+</odoo>
