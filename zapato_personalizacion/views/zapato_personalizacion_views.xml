@@ -28,11 +28,12 @@
                     <div class="oe_title">
                         <label for="name" string="Nombre de la Personalización"/>
                         <h1>
-                            <field name="name" placeholder="Ej. Suela Track con Iniciales Oro"/>
+                            <field name="name" placeholder="Iniciales Oro"/>
                         </h1>
-                        <group>
+                        <div class="o_row d-flex align-items-center mt-2">
+                            <span class="me-2" style="font-weight: bold; color: #666666;">Calidad :</span>
                             <field name="calificacion" widget="priority"/>
-                        </group>
+                        </div>
                     </div>
 
                     <group>
@@ -41,7 +42,7 @@
                             <field name="precio"/>
                         </group>
                         
-                        <group string="Detalles del Diseño">
+                        <group string="Detalles del Zapato Base">
                             <field name="color"/>
                             <field name="material"/>
                             <field name="talla"/>
